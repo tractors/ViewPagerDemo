@@ -3,6 +3,7 @@ package com.will.viewpagedemo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.activity_main.*
@@ -24,6 +25,11 @@ class MainActivity : AppCompatActivity() {
                 }
             }
 
+        }
+
+        // 去掉滑动到边的动画阴影的方法
+        viewPager2.apply {
+            (getChildAt(0) as? RecyclerView)?.overScrollMode = RecyclerView.OVER_SCROLL_NEVER
         }
 
         TabLayoutMediator(tabLayout,viewPager2) { tab, position ->
